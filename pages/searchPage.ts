@@ -20,31 +20,27 @@ export class SearchPage {
         await this.page.goto('/search');
     }
     async searchForItem(itemToSearch: string) {
-       await this.searchInput.fill(itemToSearch)
-       await this.searchButton.click()
+        await this.searchInput.fill(itemToSearch)
+        await this.searchButton.click()
     }
 
     async verifySuccessSearch(expectedResult: string) {
         const resultLocator = this.searchResult
-        for (let i = 0; i < 10; i++) {
-            const resultText = await resultLocator.textContent();
-            if (resultText && resultText.trim() !== "searching..." && resultText.trim() !== "") {
-                expect(resultText.trim()).toContain(expectedResult);
-                return;
-            }
-            await this.page.waitForTimeout(500);
-        }
+        await expect.poll(async () => {
+            return resultLocator.textContent();
+        }, {
+            // Poll for 10 seconds;
+            timeout: 10000,
+        }).toContain(expectedResult);
     }
 
     async verifyEmptySearch() {
-        
-         for (let i = 0; i < 10; i++) {
-            const actualResult = await this.searchResult.textContent();
-            if (actualResult && actualResult.trim() !== "searching..." && actualResult.trim() !== "") {
-                expect(actualResult.trim()).toBe('Please provide a search word.');
-                return;
-            }
-            await this.page.waitForTimeout(500);
-        }
+        const resultLocator = this.searchResult
+        await expect.poll(async () => {
+            return resultLocator.textContent();
+        }, {
+            // Poll for 10 seconds;
+            timeout: 10000,
+        }).toBe('Please provide a search word.');
     }
 }

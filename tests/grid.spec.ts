@@ -10,7 +10,7 @@ test.beforeEach(async ({ loginPage, homePage, gridPage }) => {
     await gridPage.navigateToGrid();
 });
 test.describe( 'Grid Test Cases',{tag: '@grid'}, () => {
-
+    /*I added some examples of test tag and suit tag, to specify the module or the type of test it can be grouped into*/
     test('Grid Super Pepperoni Item Test',{tag: ['@smoke']}, async ({ gridPage }) => {
 
         /* I think in Two Ways to validate the same here, the first one will need the price to validate
@@ -27,8 +27,9 @@ test.describe( 'Grid Test Cases',{tag: '@grid'}, () => {
 
         test('Grid All Item Test Does Follow The Correct Structure', async ({ gridPage }) => {
 
-        /* I think in Two Ways to validate the same here, the first one will need the price to validate
-        , Here is directly inserted as we are validating one item, but it can also be added in a new test data script. */
+        /* For this test is necessary to grab all the items and iterate one by one to check if anything is missing,
+        for that I used a for loop, the problem I found is that the DOM of the page is not a list, is division with new paragraph for every item,
+        So I needed to implement some code to extraxt them and the suggested locators where not the best, so I used a mixture of locators.*/
 
         await gridPage.verifyAllItemsStructure();
     });

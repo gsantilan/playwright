@@ -7,7 +7,7 @@ export class GridPage {
     private readonly wholeSupperPepperoniCard: Locator
     private readonly menuItems: Locator;
 
-    // Selector paths (reusable)
+    // Selector paths
     private readonly itemTitleSelector = '[data-test-id="item-name"]';
     private readonly itemImageSelector = 'img';
     private readonly itemPriceSelector = '#item-price';

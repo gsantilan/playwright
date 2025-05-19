@@ -10,10 +10,12 @@ test.beforeEach(async ({ loginPage,homePage,checkoutPage }) => {
   await homePage.verifyWelcomePage();
   await checkoutPage.navigateToCheckOut();
 });
+
 test.describe('Check Out Test Cases',{tag: '@checkOut'}, () => {
-    
+    /*I added some examples of test tag and suit tag, to specify the module or the type of test it can be grouped into*/
     test('Check Out Form Order Success ',{tag: ['@smoke']}, async ({checkoutPage,orderPage }) => {
         
+        /* The test data is imported from checkOutFormData.ts, in this way, is easier to maintain and reuse */
         await checkoutPage.fillCheckOutForm(checkOutTestData.validForm.fullName,
             checkOutTestData.validForm.nameOnCard,
             checkOutTestData.validForm.email,

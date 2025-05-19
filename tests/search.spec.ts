@@ -10,7 +10,9 @@ test.beforeEach(async ({ loginPage, homePage, searchPage }) => {
     await searchPage.navigateToSearch();
 });
 test.describe( 'Search Test Cases', {tag: '@search'},() => {
+    /*I added some examples of test tag and suit tag, to specify the module or the type of test it can be grouped into*/
 
+    /*The only complexity is that the first result will be always Searching, So I used expect.poll to check for the result to appear*/
     test('Search For An Item',{tag: ['@smoke']}, async ({ searchPage }) => {
        await searchPage.searchForItem('Classic Muzzarella');
        await searchPage.verifySuccessSearch('Classic Muzzarella');

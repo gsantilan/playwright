@@ -1,0 +1,20 @@
+services:
+  demo-app:
+    image: automaticbytes/demo-app
+    container_name: demo-app
+    ports:
+      - "3100:3100"
+
+  playwright-tests:
+    build:
+      context: .
+      dockerfile: dockerfile/dockerfile
+    container_name: playwright-tests
+    depends_on:
+      - demo-app
+    volumes:
+      - ./tests:/usr/src/app/tests
+      - ./playwright-report:/usr/src/app/playwright-report
+    environment:
+      - BASE_URL=http://demo-app:3100
+    command: ["npx", "playwright", "test"]

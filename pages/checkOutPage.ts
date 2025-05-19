@@ -106,14 +106,15 @@ export class CheckOutPage {
         });
         console.log(productPrices)
 
-        /*Calculating the sum of all product prices, to do this, reduce will take all the numbers product proces*/
+        /*Calculating the sum of all product prices, to do this, reduce will take all the numbers on an array and sum them, it start on 0 */
         const calculatedTotal = productPrices.reduce((sum, price) => sum + price, 0);
         console.log(calculatedTotal)
-        // Extracting the displayed total value
+        // Extracting the displayed total value, here again, I enter into the container, grab the last one, select the class price and bold text
         const displayedTotal = await this.page.textContent('.container p:last-of-type .price b');
+        // I cleaned it up
         const displayedTotalValue = parseFloat(displayedTotal?.replace('$', '').trim() || '0');
         console.log(displayedTotalValue)
-        // Comparing the calculated total with the displayed total
+        // And made the comparison
         expect(calculatedTotal).toBeCloseTo(displayedTotalValue, 2); // 2 decimals for precision
     }
 }
