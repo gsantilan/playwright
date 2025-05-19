@@ -137,7 +137,7 @@ docker-compose run playwright-tests playwright --project=chromium --grep "@smoke
 
 ## Reports
 
-* Test reports are generated in the `/playwright-report` directory for both, local and docker execution. you can open it with your default browser clickcink on it or with the following command:
+* Test reports are generated in the `/playwright-report` directory for both, local and docker execution. you can open it with your default browser or with the following command:
 
   ```bash
   npx playwright show-report
