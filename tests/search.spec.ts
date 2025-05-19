@@ -9,9 +9,9 @@ test.beforeEach(async ({ loginPage, homePage, searchPage }) => {
     await homePage.verifyWelcomePage();
     await searchPage.navigateToSearch();
 });
-test.describe( 'Search Test Cases', () => {
+test.describe( 'Search Test Cases', {tag: '@search'},() => {
 
-    test('Search For An Item', async ({ searchPage }) => {
+    test('Search For An Item',{tag: ['@smoke']}, async ({ searchPage }) => {
        await searchPage.searchForItem('Classic Muzzarella');
        await searchPage.verifySuccessSearch('Classic Muzzarella');
 

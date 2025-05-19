@@ -9,9 +9,9 @@ test.beforeEach(async ({ loginPage, homePage, gridPage }) => {
     await homePage.verifyWelcomePage();
     await gridPage.navigateToGrid();
 });
-test.describe( 'Grid Test Cases', () => {
+test.describe( 'Grid Test Cases',{tag: '@grid'}, () => {
 
-    test('Grid Super Pepperoni Item Test', async ({ gridPage }) => {
+    test('Grid Super Pepperoni Item Test',{tag: ['@smoke']}, async ({ gridPage }) => {
 
         /* I think in Two Ways to validate the same here, the first one will need the price to validate
         , Here is directly inserted as we are validating one item, but it can also be added in a new test data script. */

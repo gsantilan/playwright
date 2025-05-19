@@ -1,8 +1,8 @@
 import { test } from '../fixtures/pageFixtures';
 import { loginTestData } from '../utils/loginTestData';
-test.describe('Login Test Cases', () => {
+test.describe('Login Test Cases',{tag: '@login'}, () => {
 
-    test('Login Success', async ({ loginPage, homePage }) => {
+    test('Login Success',{tag: ['@smoke']}, async ({ loginPage, homePage }) => {
         await loginPage.login(loginTestData.validUser.username, loginTestData.validUser.password);
         await homePage.verifyWelcomePage();
     });

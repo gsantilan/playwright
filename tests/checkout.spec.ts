@@ -10,9 +10,9 @@ test.beforeEach(async ({ loginPage,homePage,checkoutPage }) => {
   await homePage.verifyWelcomePage();
   await checkoutPage.navigateToCheckOut();
 });
-test.describe('Check Out Test Cases', () => {
-
-    test('Check Out Form Order Success ', async ({checkoutPage,orderPage }) => {
+test.describe('Check Out Test Cases',{tag: '@checkOut'}, () => {
+    
+    test('Check Out Form Order Success ',{tag: ['@smoke']}, async ({checkoutPage,orderPage }) => {
         
         await checkoutPage.fillCheckOutForm(checkOutTestData.validForm.fullName,
             checkOutTestData.validForm.nameOnCard,
